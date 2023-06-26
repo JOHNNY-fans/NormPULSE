@@ -14,7 +14,7 @@
 
 <!-- Insert the project banner here -->
 <div align="center">
-    <a href="https://"><img width="1000px" height="auto" src="https://github.com/openmedlab/sampleProject/blob/main/banner_sample.png"></a>
+    <a href="https://"><img width="1000px" height="auto" src="[https://github.com/openmedlab/sampleProject/blob/main/banner_sample.png](https://github.com/openmedlab/.github/raw/main/banner.png)"></a>
 </div>
 
 ---
