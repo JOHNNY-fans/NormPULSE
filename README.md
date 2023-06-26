@@ -1,4 +1,4 @@
-# [Model/Code]HierNorm: A Generative Approach with Distilled Knowledge and Tree Structure for Clinical Term Normalization
+# HierNorm: A Generative Approach with Distilled Knowledge and Tree Structure for Clinical Term Normalization
 <!-- select Model and/or Data and/or Code as needed>
 ### Welcome to OpenMEDLab! 👋
 
@@ -14,7 +14,7 @@
 
 <!-- Insert the project banner here -->
 <div align="center">
-    <a href="https://"><img width="1000px" height="auto" src="https://github.com/openmedlab/.github/raw/main/banner.png"></a>
+    <a href="https://"><img width="1000px" height="auto" src="https://github.com/JOHNNY-fans/HierNorm/blob/main/figure/pulse.png"></a>
 </div>
 
 ---
