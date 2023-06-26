@@ -11,7 +11,7 @@
 🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 -->
 
-
+This repository is a sub-repository of PULSE(https://github.com/openmedlab/PULSE).
 <!-- Insert the project banner here -->
 <div align="center">
     <a href="https://"><img width="1000px" height="auto" src="https://github.com/JOHNNY-fans/HierNorm/blob/main/figure/pulse.png"></a>
