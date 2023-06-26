@@ -39,8 +39,8 @@ Key feature bulletin points here
 <!-- give an introduction of your project -->
 ## Details
 
-We outline the comprehensive framework of our solution, HierNorm, which comprises two primary stages: the offline stage and the online inference stage, as shown in the following Figure
-During the offline stage, we adopt two main tasks: knowledge card generation, aiming at enhancing the knowledge inside term by distilling knowledge from LLM; hierarchical tree construction based on the ICD codes.
+We outline the comprehensive framework of our solution, HierNorm, which comprises two primary stages: the offline stage and the online inference stage, as shown in the following Figure.  
+During the offline stage, we adopt two main tasks: knowledge card generation, aiming at enhancing the knowledge inside term by distilling knowledge from LLM; hierarchical tree construction based on the ICD codes.  
 The online inference stage involves two main steps: knowledge-enhanced retrieval and hierarchical reasoning, creating a complete normalization flow path. In the first step, the model retrieves candidates for the given mention using the generated knowledge cards and locates the path of each candidate in the constructed hierarchical tree to build a subtree. In the second step, the model reasons out the final result layer by layer through the subtree.
 
 <!-- Insert a pipeline of your algorithm here if got one -->
