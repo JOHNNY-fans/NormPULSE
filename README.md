@@ -105,7 +105,7 @@ python DDD
 
 ## 🛡️ License
 
-This project is under the CC-BY-NC 4.0 license. See [LICENSE](LICENSE) for details.
+This project is under the CC-BY-NC 4.0 license. See [LICENSE](https://github.com/JOHNNY-fans/HierNorm/blob/main/LICENSE) for details.
 
 ## 🙏 Acknowledgement
 
