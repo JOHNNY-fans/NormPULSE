@@ -51,7 +51,7 @@ The online inference stage involves two main steps: knowledge-enhanced retrieval
 ## Demo
 Here is our simple demo.
 <div align="center">
-    <a href="https://"><img width="1000px" height="auto" src="https://github.com/JOHNNY-fans/HierNorm/blob/main/figure/norm_demo_v1.png"></a>
+    <a href="https://"><img width="1000px" height="auto" src="https://github.com/JOHNNY-fans/HierNorm/blob/main/figure/norm_demo_v2.png"></a>
 </div>
 
 
