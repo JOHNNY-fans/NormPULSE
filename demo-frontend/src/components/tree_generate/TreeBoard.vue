@@ -308,14 +308,14 @@ watch(
 
 <style scoped>
 .chart {
-  width: 45%;
-  height: 350px;
+  width: 100%;
+  height: 315px;
   /* float: left; */
   background-color: #fff;
   margin: 15px auto;
   padding: 15px;
-  border-top: 2px solid #4472c4;
-  border: 2px solid #4472c4;
+  border-top: 5px solid #bbfbfc;
+  border: 5px solid #bbfbfc;
   /* border-left: 2px solid #b6a8ce; */
   /* box-shadow: 0px 4px 12px 3px rgb(43 41 83 / 7%); */
   border-radius: 4px;

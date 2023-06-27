@@ -81,9 +81,10 @@ watch(
   margin: 15px auto;
   /* padding: 15px; */
   /* border-left: 2px solid #b6a8ce; */
-  box-shadow: 0px 4px 12px 3px rgb(43 41 83 / 7%);
+  box-shadow: 0px 4px 12px 3px rgb(42, 143, 216 / 7%);
   border-radius: 4px;
   /* height: 200px; */
+  border-top: 5px solid #bbfbfc;
 }
 .scrollcontent {
   overflow-y: scroll;
@@ -107,7 +108,7 @@ watch(
   padding: 5px 10px;
   border: 1px solid #4472c4;
   border-radius: 10px;
-  max-width: 50%;
+  max-width: 80%;
   white-space: pre-wrap;
   word-wrap: break-word;
   position: relative;
@@ -139,11 +140,12 @@ watch(
   padding: 5px 10px;
   border: 1px solid #d9d2e9;
   border-radius: 10px;
-  max-width: 50%;
+  max-width: 80%;
   white-space: pre-wrap;
   word-wrap: break-word;
   margin-right: 20px;
   position: relative;
+  text-align: left;
 }
 .ptalk span:after {
   position: absolute;
