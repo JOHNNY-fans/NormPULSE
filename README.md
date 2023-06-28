@@ -91,7 +91,8 @@ The code of this project is licensed under [Apache 2.0](https://github.com/JOHNN
 ## 🙏 Acknowledgement
 
 - Shanghai AI Laboratory.
-- East China University of Science and Technology. 
+- East China University of Science and Technology.
+- 
 <!--
 ## 📝 Citation
 
