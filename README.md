@@ -52,8 +52,7 @@ Here is our simple demo.
 **Main Requirements**  
 > transformers>=4.27.4
 > faiss-gpu==1.7.2
-> torch==1.12.1  
-> tqdm  
+> torch==1.12.1
 > fastapi
 > uvicorn
 
@@ -67,7 +66,8 @@ You can find the pre-trained model weights and the NormPULSE weights in the foll
 - [PULSE](https://huggingface.co/OpenMEDLab/PULSE-7bv5)
 - [NormPULSE] 
 
-<!--
+## To be continued~
+
 **Preprocess**
 ```bash
 python DDD
@@ -79,24 +79,10 @@ python DDD
 python DDD
 ```
 
-
-**Validation**
+**Usage**
 ```bash
 python DDD
 ```
-
-
-**Testing**
-```bash
-python DDD
-```
-
-## 🙋‍♀️ Feedback and Contact
-
-- Email
-- Webpage 
-- Social media
--->
 
 ## 🛡️ License
 
