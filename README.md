@@ -68,20 +68,7 @@ You can find the PULSE-7b pre-trained model weights and the NormPULSE weights in
 - [PULSE](https://huggingface.co/OpenMEDLab/PULSE-7bv5)
 - [NormPULSE] 
 
-## To be continued~
-
-**Preprocess**
-```bash
-python DDD
-```
-
-
-**Training**
-```bash
-python DDD
-```
-
-**Usage**
+**Usage To be continued~**
 ```bash
 python DDD
 ```
