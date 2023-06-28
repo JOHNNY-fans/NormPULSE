@@ -50,11 +50,11 @@ Here is our simple demo.
 
 ## Get Started
 **Main Requirements**  
-> transformers>=4.27.4 
-> faiss-gpu==1.7.2 
-> torch==1.12.1 
-> fastapi 
-> uvicorn 
+> transformers>=4.27.4  
+> faiss-gpu==1.7.2  
+> torch==1.12.1  
+> fastapi  
+> uvicorn  
 
 **Installation**
 ```bash
