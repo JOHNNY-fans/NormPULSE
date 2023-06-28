@@ -64,7 +64,7 @@ pip install requirements.txt
 ```
 
 **Download Model**  
-You can find the pre-trained model weights and the NormPULSE weights in the following huggingface repositories.  
+You can find the PULSE-7b pre-trained model weights and the NormPULSE weights in the following huggingface repositories.  
 - [PULSE](https://huggingface.co/OpenMEDLab/PULSE-7bv5)
 - [NormPULSE] 
 
