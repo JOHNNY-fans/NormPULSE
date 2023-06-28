@@ -58,6 +58,8 @@ Here is our simple demo.
 
 **Installation**
 ```bash
+git clone https://github.com/JOHNNY-fans/NormPULSE.git
+cd NormPULSE
 pip install requirements.txt
 ```
 
