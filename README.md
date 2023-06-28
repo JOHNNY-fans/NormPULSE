@@ -1,6 +1,5 @@
-# HierNorm: A Generative Approach with Distilled Knowledge and Tree Structure for Clinical Term Normalization
+# NormPULSE: A Generative Approach for Clinical Term Normalization
 <!-- select Model and/or Data and/or Code as needed>
-### Welcome to OpenMEDLab! 👋
 
 <!--
 **Here are some ideas to get you started:**
