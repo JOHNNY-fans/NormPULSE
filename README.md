@@ -54,9 +54,7 @@ Here is our simple demo.
 
 
 ## Dataset Links
-### Open source
-- [Yidu-N7k](http://openkg.cn/dataset/yidu-n7k)
-- [CHIP-CDN](https://tianchi.aliyun.com/dataset/95414)
+[data4normpulse](https://huggingface.co/datasets/Johnnyfans/data4normpulse)
 
 ## Get Started
 To be continued~
