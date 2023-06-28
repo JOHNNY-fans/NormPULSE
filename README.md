@@ -92,7 +92,7 @@ The code of this project is licensed under [Apache 2.0](https://github.com/JOHNN
 
 - Shanghai AI Laboratory.
 - East China University of Science and Technology.
-<!--
+%%
 ## 📝 Citation
 
 If you find this repository useful, please consider citing this paper:
@@ -103,5 +103,5 @@ If you find this repository useful, please consider citing this paper:
   journal={arXiv preprint arXiv:},
   year={2023}
 }
--->
+%%
 ```
