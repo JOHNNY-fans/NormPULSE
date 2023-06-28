@@ -86,7 +86,7 @@ python DDD
 
 ## 🛡️ License
 
-This project is under the CC-BY-NC 4.0 license. See [LICENSE](https://github.com/JOHNNY-fans/NormPULSE/blob/main/LICENSE) for details.
+The code of this project is licensed under [Apache 2.0](https://github.com/JOHNNY-fans/NormPULSE/blob/main/LICENSE), and the model weights are licensed under [GNU AGPL 3.0](https://github.com/JOHNNY-fans/NormPULSE/blob/main/MODEL_LICENSE). If the models contained in this project, or any modified versions thereof, are used in a service which results in misleading or harmful statements causing adverse effects, the responsibility lies with the service provider and is not associated with or attributable to this project.
 
 ## 🙏 Acknowledgement
 
