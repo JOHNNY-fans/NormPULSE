@@ -19,32 +19,28 @@ This repository is a sub-repository of [PULSE](https://github.com/openmedlab/PUL
 
 ## Key Features
 
-This repository provides the official implementation of HierNorm: A Generative Approach with Distilled Knowledge and Tree Structure for Clinical Term Normalization.
+This repository provides the official implementation of NormPULSE.
 
 Key feature bulletin points here
 - A knowledge transfer approach that utilizes data distillation from LLMs through prompt engineering, converting short clinical terms into knowledge cards that contain enhanced information and clinical knowledge.
 - Leverage the hierarchical structure in the standard term and develop an algorithm for building the tree structure with ICD codes.
-- HierNorm, a generative framework, to find the candidate terms via knowledge-enhanced retrieval and generate the final standard term with hierarchical reasoning. The proposed framework does not need to be trained on any specific dataset, showing strong generalizability, and could be deployed to various datasets without re-training.
-
-## Links
-
-- [Paper](https://)
-- [Model](https://)
-- [Code](https://) 
-<!-- [Code] may link to your project at your institute>
-
+- A generative framework, to find the candidate terms via knowledge-enhanced retrieval and generate the final standard term with hierarchical reasoning.
 
 <!-- give an introduction of your project -->
 ## Details
 
-We outline the comprehensive framework of our solution, HierNorm, which comprises two primary stages: the offline stage and the online inference stage, as shown in the following Figure.  
-During the offline stage, we adopt two main tasks: knowledge card generation, aiming at enhancing the knowledge inside term by distilling knowledge from LLM; hierarchical tree construction based on the ICD codes.  
-The online inference stage involves two main steps: knowledge-enhanced retrieval and hierarchical reasoning, creating a complete normalization flow path. In the first step, the model retrieves candidates for the given mention using the generated knowledge cards and locates the path of each candidate in the constructed hierarchical tree to build a subtree. In the second step, the model reasons out the final result layer by layer through the subtree.
+We outline the comprehensive framework of our solution to clinical term normalization, NormPULSE, which is based on PULSE and comprises three steps: 
+1. Training, There are three tasks in the training step, knowledge card generation, aiming at enhancing the knowledge inside term by distilling knowledge from LLM; hierarchical tree construction based on the ICD codes and term normalization, making the model get the ability to select the standard terms from a certain candidate list.  
+2. knowledge-enhanced retrieval, the model retrieves candidates for the given mention using the generated knowledge cards and locates each candidate's path in the constructed hierarchical tree to build a subtree.
+3. hierarchical reasoning, the model reasons out the final result layer by layer through the subtree.
 
 <!-- Insert a pipeline of your algorithm here if got one -->
 <div align="center">
     <a href="https://"><img width="1000px" height="auto" src="https://github.com/JOHNNY-fans/HierNorm/blob/main/figure/architecture_zh.png"></a>
 </div>
+
+## Dataset
+[data4normpulse](https://huggingface.co/datasets/Johnnyfans/data4normpulse)
 
 ## Demo
 Here is our simple demo.
@@ -52,29 +48,26 @@ Here is our simple demo.
     <a href="https://"><img width="1000px" height="auto" src="https://github.com/JOHNNY-fans/HierNorm/blob/main/figure/norm_demo_v2.png"></a>
 </div>
 
-
-## Dataset Links
-[data4normpulse](https://huggingface.co/datasets/Johnnyfans/data4normpulse)
-
 ## Get Started
-To be continued~
-<!--
 **Main Requirements**  
-> connected-components-3d  
-> h5py==3.6.0  
-> monai==0.9.0  
-> torch==1.11.0  
+> transformers>=4.27.4
+> faiss-gpu==1.7.2
+> torch==1.12.1  
 > tqdm  
-> fastremap  
+> fastapi
+> uvicorn
 
 **Installation**
 ```bash
-pip install DDD
+pip install requirements.txt
 ```
 
 **Download Model**
+You can find the pre-trained model weights and the NormPULSE weights in the following huggingface repositories.
+- [PULSE](https://huggingface.co/OpenMEDLab/PULSE-7bv5)
+- [NormPULSE] 
 
-
+<!--
 **Preprocess**
 ```bash
 python DDD
@@ -107,13 +100,13 @@ python DDD
 
 ## 🛡️ License
 
-This project is under the CC-BY-NC 4.0 license. See [LICENSE](https://github.com/JOHNNY-fans/HierNorm/blob/main/LICENSE) for details.
+This project is under the CC-BY-NC 4.0 license. See [LICENSE](https://github.com/JOHNNY-fans/NormPULSE/blob/main/LICENSE) for details.
 
 ## 🙏 Acknowledgement
 
 - Shanghai AI Laboratory.
 - East China University of Science and Technology. 
-
+<!--
 ## 📝 Citation
 
 If you find this repository useful, please consider citing this paper:
@@ -124,4 +117,5 @@ If you find this repository useful, please consider citing this paper:
   journal={arXiv preprint arXiv:},
   year={2023}
 }
+-->
 ```
