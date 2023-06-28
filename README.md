@@ -46,7 +46,7 @@ The part of clinical term normalization data is based on the following two open-
 
 The standard terminology database is [ICD-10医保2.0版](https://code.nhsa.gov.cn/search.html?sysflag=80) and [ICD-9-CM3医保2.0版](https://code.nhsa.gov.cn/search.html?sysflag=80), and we construct the two corresponding code trees by parsing the term codes, which are available at [ICD-10_医保v2_tree.json](data/ICD-10_医保v2_tree.json) and [ICD-9-CM3_医保v2_tree.json](data/ICD-9-CM3_医保v2_tree.json)
 
-We also give examples of other training data at the [data directory](data/).  
+We also provide the examples of the training data at the [data directory](data/).  
 ## Demo
 Here is our simple demo.
 <div align="center">
