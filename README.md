@@ -1,5 +1,4 @@
 # NormPULSE: A Generative Approach for Clinical Term Normalization
-<!-- select Model and/or Data and/or Code as needed>
 
 <!--
 **Here are some ideas to get you started:**
