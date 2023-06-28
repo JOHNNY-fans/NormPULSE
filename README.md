@@ -40,7 +40,12 @@ We outline the comprehensive framework of our solution to clinical term normaliz
 </div>
 
 ## Dataset
-[data4normpulse](https://huggingface.co/datasets/Johnnyfans/data4normpulse)
+The part of clinical term normalization data is based on the following two open-source datasets.
+- [Yidu-N7k](http://openkg.cn/dataset/yidu-n7k)
+- [CHIP-CDN](https://tianchi.aliyun.com/dataset/95414)
+
+The standard terminology database is [ICD-10医保2.0版](https://code.nhsa.gov.cn/search.html?sysflag=80) and [ICD-9-CM3医保2.0版](https://code.nhsa.gov.cn/search.html?sysflag=80), and we construct the tree structure by parsing the term code.  
+The tree is available at [ICD-10_医保v2_tree.json](data/ICD-10_医保v2_tree.json) and [ICD-9-CM3_医保v2_tree.json](data/ICD-9-CM3_医保v2_tree.json)
 
 ## Demo
 Here is our simple demo.
