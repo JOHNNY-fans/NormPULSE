@@ -1,5 +1,27 @@
 <template>
   <main>
+    <transition name="fadel" mode="out-in"
+      ><IconTittle
+        v-if="reset"
+        style="left: 0; margin: 15px"
+        :title="'Norm'"
+      ></IconTittle
+    ></transition>
+    <transition name="fader" mode="out-in"
+      ><IconTittle
+        v-if="reset"
+        style="right: 0; margin: 15px"
+        :title="'PULSE'"
+      ></IconTittle
+    ></transition>
+    <transition name="fade" mode="out-in"
+      ><IconTittle
+        v-if="!reset"
+        style="right: 50%; transform: translateX(50%); margin: 15px"
+        :title="'NormPULSE'"
+      ></IconTittle
+    ></transition>
+
     <!-- <TheWelcome /> -->
     <div class="state-board">
       <TreeBoard v-if="reset" :tree="Tree" :path="path"></TreeBoard>
@@ -38,28 +60,31 @@
     <div class="wave" style="--i: 16"></div>
     <div class="wave" style="--i: 17"></div>
     <div class="wave" style="--i: 18"></div>
-    <div class="wave" style="--i: 19"></div>
-    <div class="wave" style="--i: 20"></div>
-    <!-- <div class="line" stylle="--z:5"></div>
-    <div class="line" stylle="--z:4"></div>
-    <div class="line" stylle="--z:3"></div>
-    <div class="line" stylle="--z:2"></div>
-    <div class="line" stylle="--z:1"></div>
-    <div class="line" stylle="--z:0"></div>
-    <div class="line" stylle="--z:1"></div>
-    <div class="line" stylle="--z:2"></div>
-    <div class="line" stylle="--z:3"></div>
-    <div class="line" stylle="--z:4"></div>
-    <div class="line" stylle="--z:5"></div>
-    <div class="line" stylle="--z:6"></div>
-    <div class="line" stylle="--z:7"></div>
-    <div class="line" stylle="--z:8"></div>
-    <div class="line" stylle="--z:9"></div>
-    <div class="line" stylle="--z:10"></div>
-    <div class="line" stylle="--z:11"></div>
-    <div class="line" stylle="--z:12"></div>
-    <div class="line" stylle="--z:13"></div>
-    <div class="line" stylle="--z:14"></div> -->
+    <!-- <div class="wave" style="--i: 19"></div> -->
+    <!-- <div class="wave" style="--i: 20"></div> -->
+    <!-- <div class="container"> -->
+    <!-- <div class="line" style="--x: 1; --y: 9; --z: 5"></div>
+    <div class="line" style="--x: 1; --y: 4; --z: 4"></div>
+    <div class="line" style="--x: 2; --y: 6; --z: 3"></div> -->
+    <div class="line" style="--x: 1; --y: 4; --z: 2"></div>
+    <div class="line" style="--x: 3; --y: 9; --z: 1"></div>
+    <div class="line" style="--x: 1; --y: 4; --z: 0"></div>
+    <div class="line" style="--x: 2; --y: 6; --z: -1"></div>
+    <div class="line" style="--x: 2; --y: 8; --z: -2"></div>
+    <div class="line" style="--x: 1; --y: 7; --z: -3"></div>
+    <div class="line" style="--x: 1; --y: 5; --z: -4"></div>
+    <div class="line" style="--x: 1; --y: 4; --z: -5"></div>
+    <div class="line" style="--x: 1; --y: 7; --z: -6"></div>
+    <!-- <div class="line" style="--z: 7"></div> -->
+    <!-- <div class="line" style="--z: 8"></div> -->
+    <!-- <div class="line" style="--z: 9"></div> -->
+    <!-- <div class="line" style="--z: 10"></div> -->
+    <!-- <div class="line" style="--z: 11"></div> -->
+    <!-- <div class="line" style="--z: 12"></div> -->
+    <!-- <div class="line" style="--z: 13"></div> -->
+    <!-- <div class="line" style="--z: 14"></div> -->
+    <!-- </div> -->
+    <!-- <div class="clear-float" style="clear: both"></div> -->
   </main>
   <!-- <div class="decorate"></div> -->
 </template>
@@ -240,9 +265,13 @@ const getData = async (query: string, tend: string, level: number) => {
 
 <style scoped>
 main {
+  overflow: auto;
   text-align: center;
-  padding: 15px;
+  /* padding: 15px; */
   height: 100vh;
+  max-height: 100vh;
+  width: 100vw;
+  /* overflow: auto; */
   /* background-color: #f6f6f6; */
   background-image: linear-gradient(
     to bottom right,
@@ -254,7 +283,7 @@ main {
   );
   position: relative;
   perspective: 800px;
-  /* perspective-origin: left bottom; */
+  perspective-origin: left bottom;
   transform-style: preserve-3d;
   /* animation: wave-light infinite; */
 }
@@ -263,6 +292,7 @@ main {
   width: 100%;
   height: 20vh;
   position: absolute;
+  /* position: fixed; */
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -296,19 +326,31 @@ main {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 0;
+  top: 0;
+  right: 25%;
+  /* transform: translateZ(calc(var(--z)) * 100px); */
+  /* bottom: 0; */
   width: 200px;
   height: 3px;
   border-radius: 3px;
   /* background-color: #fff; */
   background-image: linear-gradient(to right, #6be6f7, #6be6f750, transparent);
+  animation: down 5s infinite linear both;
+  animation-delay: calc(var(--z) * 3s);
+  opacity: 0;
 }
 @keyframes down {
   0% {
-    transform: translateY(100px) translateZ(var(--z) * 100px);
+    transform: translateY(calc(var(--y) * 30px))
+      translateZ(calc(var(--z) * 120px)) translateX(calc(var(--x) * 200px))
+      rotate(-45deg);
+    opacity: 0;
   }
-  5% {
-    transform: translateY(100px) translateZ(var(--z) * 100px);
+  100% {
+    transform: translateY(calc(var(--y) * 100px))
+      translateZ(calc(var(--z) * 120px)) translateX(calc(var(--x) * -100px))
+      rotate(-45deg);
+    opacity: 1;
   }
 }
 .line::before,
@@ -339,10 +381,38 @@ main {
   z-index: 9;
 }
 .chat-board {
-  height: calc(100% - 400px);
+  max-height: 35.25rem;
   max-width: 900px;
   margin: 0 auto;
   box-shadow: 0px 4px 12px 3px rgb(42, 143, 216 / 7%);
   z-index: 9;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 1s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fadel-leave-active {
+  transform: translateX(-100px);
+  transition: all 1s ease;
+}
+.fadel-enter-from,
+.fadel-leave-to {
+  transform: translateX(100px);
+  opacity: 0;
+}
+
+.fader-leave-active {
+  transform: translateX(100px);
+  transition: all 1s ease;
+}
+.fader-enter-from,
+.fader-leave-to {
+  transform: translateX(-100px);
+  opacity: 0;
 }
 </style>

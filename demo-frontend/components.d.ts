@@ -15,6 +15,7 @@ declare module 'vue' {
     IconHuman: typeof import('./src/components/icons/IconHuman.vue')['default']
     IconRobort: typeof import('./src/components/icons/IconRobort.vue')['default']
     IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
+    IconTittle: typeof import('./src/components/icons/IconTittle.vue')['default']
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
     TreeBoard: typeof import('./src/components/tree_generate/TreeBoard.vue')['default']
   }

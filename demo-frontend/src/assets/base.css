@@ -94,3 +94,19 @@ div::-webkit-scrollbar-thumb {
 div::-webkit-scrollbar-thumb:hover {
   background: #142771;
 }
+main::-webkit-scrollbar {
+  width: 7px;
+  height: 5px;
+  /**/
+}
+main::-webkit-scrollbar-track {
+  background: #14277100;
+  border-radius: 2px;
+}
+main::-webkit-scrollbar-thumb {
+  background: #395a9600;
+  border-radius: 5px;
+}
+main::-webkit-scrollbar-thumb:hover {
+  background: #14277100;
+}
