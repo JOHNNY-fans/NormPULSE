@@ -98,6 +98,7 @@ yarn dev
 ```bash
 cd demo-backend
 python run.py
+```
 
 ## 🛡️ License
 
