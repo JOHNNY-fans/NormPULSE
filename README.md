@@ -55,7 +55,7 @@ Here is our simple demo.
 
 
 ## Get Started
-#### 
+### Model Setup
 **Main Requirements**  
 > transformers>=4.27.4  
 > faiss-gpu==1.7.2  
