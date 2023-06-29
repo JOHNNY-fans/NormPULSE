@@ -79,7 +79,7 @@ You can find the PULSE-7b pre-trained model weights and the NormPULSE weights in
 ```bash
 python DDD
 ```
-#### Demo Setup
+### Demo Setup
 **fronend Setup**
 
 ```sh
