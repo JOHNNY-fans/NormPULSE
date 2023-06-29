@@ -50,10 +50,12 @@ We also provide the examples of the training data at the [data directory](data/)
 ## Demo
 Here is our simple demo.
 <div align="center">
-    <a href="https://"><img width="1000px" height="auto" src="https://github.com/JOHNNY-fans/HierNorm/blob/main/figure/norm_demo_v2.png"></a>
+    <a href="https://"><img width="1000px" height="auto" src="https://github.com/JOHNNY-fans/HierNorm/blob/main/figure/norm_demo_v3.png"></a>
 </div>
 
+
 ## Get Started
+#### 
 **Main Requirements**  
 > transformers>=4.27.4  
 > faiss-gpu==1.7.2  
@@ -77,6 +79,25 @@ You can find the PULSE-7b pre-trained model weights and the NormPULSE weights in
 ```bash
 python DDD
 ```
+#### Demo Setup
+**fronend Setup**
+
+```sh
+cd demo-frontend
+yarn
+```
+
+**Compile and Hot-Reload for Development**
+
+```sh
+yarn dev
+```
+
+**Run Backend**
+
+```bash
+cd demo-backend
+python run.py
 
 ## 🛡️ License
 
