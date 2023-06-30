@@ -32,7 +32,7 @@
     <transition name="fadet" mode="out-in">
       <div
         style="width: 100%"
-        v-if="(!let_input && reset) || level < tree_depth"
+        v-if="!let_input && reset && !(level >= tree_depth)"
       >
         <ActionButtom
           :title="'Go on'"
