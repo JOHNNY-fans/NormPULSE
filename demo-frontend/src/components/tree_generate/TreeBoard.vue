@@ -298,6 +298,13 @@ nextTick(() => {
   // // console.log(options.value);
 });
 watch(
+  () => props.tree,
+  () => {
+    options.value = processData();
+  },
+  { deep: true }
+);
+watch(
   () => props.path,
   () => {
     options.value = processData();
