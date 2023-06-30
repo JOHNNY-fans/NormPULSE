@@ -93,23 +93,24 @@ let history_dialog = ref<string[][]>([]);
 let prompt_dict = {
   retrieval: "[INPUT]",
   reference:
-    "请扮演一个医学专家，你需要从候选标准术语列表中找出输入常用术语对应的标准术语，注意对应的标准术语可能有多个，你可以参考已知信息。若找到对应的标准术语则输出这些标准术语，若有多个标准术语则用'##'分隔。\n注意：1. 检查输出是否在候选术语列表中；2. 不要进行多余的解释和说明。\n常用术语：[INPUT]\n候选标准术语列表：[CANDIDATE]\n无\n输出",
+    "请扮演一个医学专家，你需要从候选标准术语列表中找出输入常用术语对应的标准术语，注意对应的标准术语可能有多个。若找到对应的标准术语则输出这些标准术语，有多个标准术语则用'##'分隔；若找不到对应的标准术语则输出“无对应标准术语”，并推荐可能对应的标准术语。\n注意：1. 保证输出的标准术语是否在候选术语列表中；2. 不要进行多余的解释和说明\n常用术语：[INPUT]\n候选标准术语列表：\n[CANDIDATE]\n输出",
 };
 const startDialog = async () => {
-  retrievalData(text.value);
-  inferenceData(text.value);
+  await retrievalData(text.value);
+  // await inferenceData(text.value);
   let_input.value = false;
   reset.value = true;
 };
-const fixAnswer = () => {
+const fixAnswer = async () => {
   level.value -= 1;
   // retrievalData(new_target);
   answer.value = target_answers.value.join("##");
-  inferenceData(answer.value);
+  dialog_messages.value[dialog_messages.length - 1].content = answer.value;
+  // await inferenceData(answer.value);
 };
-const continueAnswer = () => {
-  retrievalData(answer.value);
-  inferenceData(answer.value);
+const continueAnswer = async () => {
+  await retrievalData(text.value);
+  // await inferenceData(answer.value);
 };
 const retrievalData = async (query: string) => {
   dialog_messages.value.push({
@@ -122,51 +123,46 @@ const retrievalData = async (query: string) => {
     topN: nop_n.value,
     mention: query,
     level: level.value,
-    history: history_dialog,
+    history: history_dialog.value,
   };
-  await axios.post(BASE_API + "retrival", post_data).then((res: any) => {
-    Tree.value.push = res.data.cand_list;
+  axios.post(BASE_API + "retrival", post_data).then((res: any) => {
+    // Tree.value.push(res.data.cand);
     tree_depth.value = res.data.max_depth;
     candidates.value = [];
-    for (let i in res.data.cand_list) {
-      candidates.value.push(res.data.cand_list[i]["term_name"]);
+    for (let i in res.data.cand) {
+      Tree.value[res.data.cand[i].code] = res.data.cand[i];
+      candidates.value.push(res.data.cand[i]["term_name"]);
     }
     dialog_messages.value.push({
       type: "chat-glm-norm",
       content: candidates.value.join("；"),
       tend: "Retrieval" + "（第" + String(level.value) + "层）",
     });
+    inferenceData(query);
   });
 };
 const inferenceData = async (query: string) => {
   let prompt = prompt_dict["reference"]
     .replace("[INPUT]", query)
-    .replace("[CANDIDATE]", candidates.value.join("，"));
+    .replace("[CANDIDATE]", candidates.value.join("\n"));
   dialog_messages.value.push({
     type: "human",
-    content: prompt,
+    content: prompt_dict["reference"].replace("[INPUT]", query),
     tend: "human",
   });
   let post_data = {
-    prompt: query,
+    prompt: prompt,
     term_type: tree.value,
     task_type: "norm",
   };
-  await axios.post(BASE_API + "generate", post_data).then((res: any) => {
+  axios.post(BASE_API + "generate", post_data).then((res: any) => {
     dialog_messages.value.push({
       type: "chat-glm-norm",
       content: res.data.model_output,
       tend: "Inference" + "（第" + String(level.value) + "层）",
     });
     history_dialog.value.push([query, res.data.model_output]);
-    path.value = [];
-    for (let i in res.data.inference_answer_path) {
-      let tmp_path = [];
-      for (let j in res.data.inference_answer_path[i]) {
-        tmp_path.push(res.data.inference_answer_path[i][j]["term_name"]);
-      }
-      path.value.push(tmp_path);
-    }
+    path.value = res.data.inference_answer_path;
     answer.value = res.data.model_output;
     level.value += 1;
   });
