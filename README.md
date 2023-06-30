@@ -64,6 +64,7 @@ Here is our simple demo.
 > fastapi  
 > uvicorn  
 > GPU memory 16 GB at least.
+> [NodeJS](https://nodejs.org/en)
 
 **Installation**
 ```bash
