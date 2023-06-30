@@ -6,7 +6,7 @@
       v-for="(item, key) in dialog_messages"
       :key="key"
     >
-      <div v-if="item.type == 'chat-glm-norm'" class="tend-action">
+      <div v-if="item.type == 'human'" class="tend-action">
         当前系统动作：
         <div class="emphasis">{{ item.tend }}</div>
       </div>
