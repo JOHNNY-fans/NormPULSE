@@ -24,6 +24,8 @@
           v-model="text"
           @keyup.enter="startDialog"
           style="width: 70%"
+          placeholder="肩袖修补术"
+          @click="text === '' ? (text = '肩袖修补术') : (text = text)"
         ></el-input>
       </div>
     </transition>

@@ -1,4 +1,5 @@
 <template>
+  <div class="state-board" v-if="!reset"></div>
   <transition name="fadet" mode="out-in">
     <div class="state-board" v-if="reset">
       <!-- <TreeBoard :tree="Tree" :path="path"></TreeBoard> -->
@@ -14,9 +15,9 @@
     </transition>
     <transition name="fadet" mode="out-in">
       <div style="width: 100%" v-if="let_input">
-        <el-select v-model="type" placeholder="选择标准库" style="width: 30%">
-          <el-option :label="'手术'" :value="'op'"></el-option>
-          <el-option :label="'疾病'" :value="'dis'"></el-option>
+        <el-select v-model="term_type" placeholder="类型" style="width: 30%">
+          <el-option :label="'手术'" :value="'operation'"></el-option>
+          <el-option :label="'疾病'" :value="'disease'"></el-option>
         </el-select>
         <el-input
           v-model="text"
@@ -47,7 +48,7 @@ let let_input = ref(false);
 let reset = ref<boolean>(false);
 
 let text = ref("");
-let type = ref("op");
+let term_type = ref("op");
 interface DialogMessage {
   type: string;
   content: string;
@@ -64,45 +65,36 @@ let level_output = [
 ];
 let card_data = ref<string[]>([]);
 const startDialog = async () => {
-  getData(text.value, type.value);
+  let query =
+    term_type.value === "disease"
+      ? prompt_dict.dis.replace("[INPUT]", text.value)
+      : prompt_dict.op.replace("[INPUT]", text.value);
+  getData(query);
+  text.value = "";
 };
-const getData = async (query: string, type: string) => {
+const getData = async (query: string) => {
   dialog_messages.value.push({
     type: "human",
-    content:
-      type === "dis"
-        ? prompt_dict.dis.replace("[INPUT]", query)
-        : prompt_dict.op.replace("[INPUT]", query),
+    content: query,
     tend: "human",
   });
-  let post_data = {
-    input: query,
-    history: history_dialog.value,
-  };
-  dialog_messages.value.push({
-    type: "chat-glm-norm",
-    content: level_output[0],
-    tend: type,
-  });
-  history_dialog.value.push([query, level_output[0]]);
-  card_data.value.push(level_output[0]);
-  reset.value = true;
-  return;
+
+  // return;
   // TODO
-  await axios.post(BASE_API + "chat", post_data).then((res: any) => {
+  let post_data = {
+    prompt: prompt,
+    term_type: term_type.value,
+    task_type: "norm",
+  };
+  axios.post(BASE_API + "generate", post_data).then((res: any) => {
     dialog_messages.value.push({
       type: "chat-glm-norm",
-      content: res.data.output,
-      tend: tend,
+      content: res.data.model_output,
+      tend: "知识卡片生成",
     });
-    history_dialog.value.push([query, res.data.output]);
-    if (tend === "retrieval") {
-      Tree.value = TreeData;
-      reset.value = true;
-    } else {
-      path.value.push(res.data.output);
-    }
-    candidates.value = res.data.candidate;
+    history_dialog.value.push([query, res.data.model_output]);
+    card_data.value.push(res.data.model_output);
+    reset.value = true;
   });
 };
 const restart = () => {

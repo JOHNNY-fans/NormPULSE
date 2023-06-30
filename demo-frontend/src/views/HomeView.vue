@@ -37,7 +37,7 @@
         ></TaskButtom>
       </div>
     </transition>
-    <transition name="fadet" mode="out-in">
+    <transition name="fadetl" mode="out-in">
       <div class="divider" v-show="task_type === ''"></div>
     </transition>
     <transition name="fadet" mode="out-in">
@@ -295,6 +295,15 @@ main {
   /* transform: translateY(-100px); */
   height: 0;
   transition: all 1s ease;
+  opacity: 0;
+}
+.fadetl-enter-active,
+.fadetl-leave-active {
+  transition: all 1s ease;
+}
+.fadet-enter-from,
+.fadetl-leave-to {
+  top: 30%;
   opacity: 0;
 }
 </style>
