@@ -67,6 +67,9 @@ const lookForChildren = (father_code: string) => {
     return [];
   } else {
     for (let i in props.tree[father_code].child) {
+      if (props.tree[props.tree[father_code].child[i]] === undefined) {
+        continue;
+      }
       let color = normal_color;
       let font_size = normal_font_size;
       let formatter = [
