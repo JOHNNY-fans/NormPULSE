@@ -48,7 +48,7 @@ let let_input = ref(false);
 let reset = ref<boolean>(false);
 
 let text = ref("");
-let term_type = ref("op");
+let term_type = ref("手术");
 interface DialogMessage {
   type: string;
   content: string;
@@ -82,9 +82,9 @@ const getData = async (query: string) => {
   // return;
   // TODO
   let post_data = {
-    prompt: prompt,
+    prompt: query,
     term_type: term_type.value,
-    task_type: "norm",
+    task_type: "kc",
   };
   axios.post(BASE_API + "generate", post_data).then((res: any) => {
     dialog_messages.value.push({

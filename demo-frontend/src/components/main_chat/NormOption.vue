@@ -30,7 +30,10 @@
       </div>
     </transition>
     <transition name="fadet" mode="out-in">
-      <div style="width: 100%" v-if="!let_input && reset && level < tree_depth">
+      <div
+        style="width: 100%"
+        v-if="(!let_input && reset) || level < tree_depth"
+      >
         <ActionButtom
           :title="'Go on'"
           :description="'Go on reference with current answer'"
