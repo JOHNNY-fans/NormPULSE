@@ -30,7 +30,7 @@
       </div>
     </transition>
     <transition name="fadet" mode="out-in">
-      <div style="width: 100%" v-if="!let_input && reset">
+      <div style="width: 100%" v-if="!let_input && reset && level < tree_depth">
         <ActionButtom
           :title="'Go on'"
           :description="'Go on reference with current answer'"
@@ -117,7 +117,7 @@ const startDialog = async () => {
   reset.value = true;
 };
 const fixAnswer = async () => {
-  level.value -= 1;
+  // level.value -= 1;
   // retrievalData(new_target);
   answer.value = target_answers.value.join("##");
   dialog_messages.value[dialog_messages.value.length - 1].content =
@@ -163,7 +163,9 @@ const inferenceData = async (query: string) => {
     .replace("[CANDIDATE]", candidates.value.join("\n"));
   dialog_messages.value.push({
     type: "human",
-    content: prompt_dict["reference"].replace("[INPUT]", query),
+    content: prompt_dict["reference"]
+      .replace("[INPUT]", query)
+      .replace("[CANDIDATE]", "（" + candidates.value.join("\n") + "）"),
     tend: "human",
   });
   let post_data = {

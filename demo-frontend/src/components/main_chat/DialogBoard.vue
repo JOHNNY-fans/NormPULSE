@@ -6,6 +6,10 @@
       v-for="(item, key) in dialog_messages"
       :key="key"
     >
+      <div v-if="item.type == 'chat-glm-norm'" class="tend-action">
+        当前系统动作：
+        <div class="emphasis">{{ item.tend }}</div>
+      </div>
       <el-icon
         v-if="item.type == 'chat-glm-norm'"
         style="margin-left: 35px; font-size: 30px"
@@ -14,10 +18,6 @@
       <span>
         {{ item.content }}
       </span>
-      <div v-if="item.type == 'chat-glm-norm'" class="tend-action">
-        当前系统动作：
-        <div class="emphasis">{{ item.tend }}</div>
-      </div>
       <el-icon
         v-if="item.type == 'human'"
         style="margin-right: 35px; font-size: 30px"
