@@ -62,7 +62,8 @@ Here is our simple demo.
 > torch==1.12.1
 > sentence-transformers==2.2.2  
 > fastapi  
-> uvicorn  
+> uvicorn
+> GPU memory 16 GB at least.
 
 **Installation**
 ```bash
