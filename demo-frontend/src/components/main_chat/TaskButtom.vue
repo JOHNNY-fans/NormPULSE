@@ -32,7 +32,7 @@ const props = defineProps<{ title: string; description: string }>();
   border-bottom: 1px solid #bbfbfc;
 }
 .bt-card:hover .title {
-  transform: translateY(30px);
+  transform: translateY(-30px);
   transition: all 1s ease;
 }
 .description {
@@ -57,7 +57,7 @@ const props = defineProps<{ title: string; description: string }>();
   background-color: #ffffff6c;
   transition: all 1s ease;
   font-size: 17px;
-  transform: translateY(30px);
+  transform: translateY(-30px);
   transition: all 1s ease;
   /* line-height: 300px; */
 }
