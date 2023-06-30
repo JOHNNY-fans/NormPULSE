@@ -1,4 +1,7 @@
 <template>
+  <div class="state-board" v-if="!reset">
+    <!-- <TreeBoard :tree="Tree" :path="path"></TreeBoard> -->
+  </div>
   <transition name="fadet" mode="out-in">
     <div class="state-board" v-if="reset">
       <TreeBoard :tree="Tree" :path="path"></TreeBoard>
@@ -26,8 +29,18 @@
     </transition>
     <transition name="fadet" mode="out-in">
       <div style="width: 100%" v-if="!let_input && reset">
-        <el-button type="primary" @click="continueAnswer">Go on</el-button>
-        <el-button type="warning" @click="handleOpen">Fix</el-button>
+        <ActionButtom
+          :title="'Go on'"
+          :description="'Go on reference with current answer'"
+          @click="continueAnswer"
+        ></ActionButtom>
+        <ActionButtom
+          :title="'Fix'"
+          :description="'Fix the error answer if possible'"
+          @click="handleOpen"
+        ></ActionButtom>
+        <!-- <el-button type="primary" @click="continueAnswer">Go on</el-button>
+        <el-button type="warning" @click="handleOpen">Fix</el-button> -->
       </div>
     </transition>
   </div>
@@ -105,7 +118,8 @@ const fixAnswer = async () => {
   level.value -= 1;
   // retrievalData(new_target);
   answer.value = target_answers.value.join("##");
-  dialog_messages.value[dialog_messages.length - 1].content = answer.value;
+  dialog_messages.value[dialog_messages.value.length - 1].content =
+    answer.value;
   // await inferenceData(answer.value);
 };
 const continueAnswer = async () => {

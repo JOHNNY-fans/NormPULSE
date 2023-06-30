@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ActionButtom: typeof import('./src/components/main_chat/ActionButtom.vue')['default']
     DialogBoard: typeof import('./src/components/main_chat/DialogBoard.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
