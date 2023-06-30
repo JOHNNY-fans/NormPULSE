@@ -75,7 +75,7 @@ watch(
 .chat {
   width: 100%;
   /* min-height: 200px; */
-  height: 34.25rem;
+  height: 40vh;
   /* float: left; */
   background-color: #fff;
   margin: 15px auto;

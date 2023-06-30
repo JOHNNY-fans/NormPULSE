@@ -124,7 +124,7 @@ watch(
 
 <style scoped>
 .state-board {
-  height: 350px;
+  height: 40.25vh;
   overflow-y: scroll;
   overflow-x: hidden;
   box-shadow: 0px 4px 12px 3px rgb(42, 143, 216 / 7%);
@@ -132,13 +132,13 @@ watch(
   display: flex;
   justify-content: left;
   flex-flow: row wrap;
-  max-width: 900px;
+  max-width: 50.25vw;
   margin: 0 auto;
   z-index: 9;
 }
 .chat-board {
-  max-height: 35.25rem;
-  max-width: 900px;
+  max-height: 40.25vh;
+  max-width: 50.25vw;
   margin: 0 auto;
   box-shadow: 0px 4px 12px 3px rgb(42, 143, 216 / 7%);
   z-index: 9;
@@ -185,8 +185,8 @@ watch(
   opacity: 0;
 }
 .restart-board {
-  height: 300px;
-  width: 300px;
+  height: 18.75vw;
+  width: 18.75vw;
   margin: 0 auto;
   box-shadow: 0px 4px 12px 3px rgb(42, 143, 216 / 7%);
   z-index: 9;
