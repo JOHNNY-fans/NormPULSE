@@ -1,0 +1,207 @@
+<template>
+  <transition name="fadet" mode="out-in">
+    <div class="state-board" v-if="reset">
+      <!-- <TreeBoard :tree="Tree" :path="path"></TreeBoard> -->
+      <KnowledgeCard :origin_data="card_data"></KnowledgeCard>
+    </div>
+  </transition>
+  <div class="chat-board">
+    <transition name="fadet" mode="out-in">
+      <DialogBoard
+        :dialog_messages="dialog_messages"
+        v-if="let_input || reset"
+      ></DialogBoard>
+    </transition>
+    <transition name="fadet" mode="out-in">
+      <div style="width: 100%" v-if="let_input">
+        <el-select v-model="type" placeholder="选择标准库" style="width: 30%">
+          <el-option :label="'手术'" :value="'op'"></el-option>
+          <el-option :label="'疾病'" :value="'dis'"></el-option>
+        </el-select>
+        <el-input
+          v-model="text"
+          @keyup.enter="startDialog"
+          style="width: 70%"
+        ></el-input>
+      </div>
+    </transition>
+  </div>
+  <transition name="fadet" mode="out-in">
+    <div class="restart-board" v-if="let_input || reset">
+      <TaskButtom
+        :title="'Restart'"
+        :description="'erase the current dialog'"
+        @click="restart()"
+      ></TaskButtom>
+    </div>
+  </transition>
+</template>
+
+<script setup lang="ts">
+import { ref, watch, onMounted } from "vue";
+import TreeData from "@/api/Tree.json";
+import axios from "@/api/index";
+import { BASE_API } from "@/main";
+
+let let_input = ref(false);
+let reset = ref<boolean>(false);
+
+let text = ref("");
+let type = ref("op");
+interface DialogMessage {
+  type: string;
+  content: string;
+  tend: string;
+}
+let dialog_messages = ref<DialogMessage[]>([]);
+let history_dialog = ref<string[][]>([]);
+let prompt_dict = {
+  dis: "知识卡片生成，请依据你掌握的医疗知识，根据输入的疾病诊断术语生成它的知识卡片，包括它的定义描述、病因、病理、部位、疾病类型和临床表现（如症状、特征、分割、分类、性别、年龄、急性慢性、发病时间等）。[INPUT]",
+  op: "请通过你的医疗知识帮我完成知识卡片生成任务\n知识卡片生成，请根据我输入手术操作术语生成它的知识卡片，包括它的定义描述、手术术式、作用部位、手术入路、手术疾病性质等。[INPUT]",
+};
+let level_output = [
+  "肩袖修补术:肩袖修补术 定义描述：肩袖修补术是一种用于治疗肩袖损伤的手术方法。肩袖损伤是指肩袖及其邻近组织的损伤，包括旋转袖肌群（冈上、冈下肌、小圆肌和肩胛下肌腱）的部分或完全破裂，肩袖的大块或完全撕脱，以及创伤引起的冈上肌腱炎等。肩袖修补术旨在通过修复损坏的肩袖组织，恢复肩关节的功能和稳定性。手术术式：肩袖修补术。作用部位：肩袖，旋转袖肌群。手术入路：通常可采用肩关节前外侧入路进行肩袖修补手术。在该入路下，医生通过制作适当的切口，将手术器械插入肩关节区域进行修复操作。手术疾病性质：肩袖修补术主要适用于肩袖损伤的治疗。肩袖损伤可由多种原因引起，如劳损、创伤或退行性病变。手术的具体方式和方式的选择取决于患者的病情和损伤的程度。",
+];
+let card_data = ref<string[]>([]);
+const startDialog = async () => {
+  getData(text.value, type.value);
+};
+const getData = async (query: string, type: string) => {
+  dialog_messages.value.push({
+    type: "human",
+    content:
+      type === "dis"
+        ? prompt_dict.dis.replace("[INPUT]", query)
+        : prompt_dict.op.replace("[INPUT]", query),
+    tend: "human",
+  });
+  let post_data = {
+    input: query,
+    history: history_dialog.value,
+  };
+  dialog_messages.value.push({
+    type: "chat-glm-norm",
+    content: level_output[0],
+    tend: type,
+  });
+  history_dialog.value.push([query, level_output[0]]);
+  card_data.value.push(level_output[0]);
+  reset.value = true;
+  return;
+  // TODO
+  await axios.post(BASE_API + "chat", post_data).then((res: any) => {
+    dialog_messages.value.push({
+      type: "chat-glm-norm",
+      content: res.data.output,
+      tend: tend,
+    });
+    history_dialog.value.push([query, res.data.output]);
+    if (tend === "retrieval") {
+      Tree.value = TreeData;
+      reset.value = true;
+    } else {
+      path.value.push(res.data.output);
+    }
+    candidates.value = res.data.candidate;
+  });
+};
+const restart = () => {
+  reset.value = false;
+  let_input.value = true;
+  text.value = "";
+  dialog_messages.value = [];
+  history_dialog.value = [];
+};
+// beforeUnmount(() => {
+//   let_input.value = false;
+// });
+onMounted(() => {
+  console.log(let_input.value);
+  setTimeout(() => {
+    let_input.value = true;
+  }, 800);
+});
+watch(
+  () => let_input,
+  () => {
+    console.log(let_input.value);
+  },
+  { deep: true }
+);
+</script>
+
+<style scoped>
+.state-board {
+  height: 350px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  box-shadow: 0px 4px 12px 3px rgb(42, 143, 216 / 7%);
+  /* background-color: #181d9d; */
+  display: flex;
+  justify-content: left;
+  flex-flow: row wrap;
+  max-width: 900px;
+  margin: 0 auto;
+  z-index: 9;
+}
+.chat-board {
+  max-height: 35.25rem;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0px 4px 12px 3px rgb(42, 143, 216 / 7%);
+  z-index: 9;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 1s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* .fadel-enter-active, */
+.fadel-leave-active {
+  transform: translateX(-300px);
+  transition: all 1s ease;
+}
+.fadel-enter-from,
+.fadel-leave-to {
+  transform: translateX(100px);
+  opacity: 0;
+}
+
+/* .fader-enter-active, */
+.fader-leave-active {
+  transform: translateX(300px);
+  transition: all 1s ease;
+}
+.fader-enter-from,
+.fader-leave-to {
+  transform: translateX(-100px);
+  opacity: 0;
+}
+
+.fadet-enter-active,
+.fadet-leave-active {
+  transition: all 1s ease;
+}
+.fadet-enter-from,
+.fadet-leave-to {
+  transform: translateY(100px);
+  transition: all 1s ease;
+  opacity: 0;
+}
+.restart-board {
+  height: 300px;
+  width: 300px;
+  margin: 0 auto;
+  box-shadow: 0px 4px 12px 3px rgb(42, 143, 216 / 7%);
+  z-index: 9;
+  text-align: center;
+  position: absolute;
+  bottom: 20%;
+  /* transform: translateY(-50%); */
+  right: 5%;
+}
+</style>

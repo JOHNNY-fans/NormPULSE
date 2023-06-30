@@ -22,4 +22,4 @@ app.use(router);
 app.component("vChart", ECharts);
 app.mount("#app");
 
-export const BASE_API = import.meta.env.VITE_BASE_API || "localhost:8080/"
+export const BASE_API = "http://0.0.0.0:2233/"

@@ -54,7 +54,7 @@ const props = defineProps<HeaderProps>();
 watch(
   () => props,
   () => {
-    // // console.log(props.dialog_messages);
+    // console.log(props.dialog_messages);
     // nextTick(() => {
     setTimeout(() => {
       let div = document.getElementById("scroll-chat-box");
@@ -75,7 +75,7 @@ watch(
 .chat {
   width: 100%;
   /* min-height: 200px; */
-  max-height: 34.25rem;
+  height: 34.25rem;
   /* float: left; */
   background-color: #fff;
   margin: 15px auto;

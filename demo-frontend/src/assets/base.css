@@ -110,3 +110,6 @@ main::-webkit-scrollbar-thumb {
 main::-webkit-scrollbar-thumb:hover {
   background: #14277100;
 }
+.el-descriptions__title {
+  color: white !important;
+}

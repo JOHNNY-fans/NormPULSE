@@ -5,6 +5,12 @@
 declare module 'vue' {
   export interface GlobalComponents {
     DialogBoard: typeof import('./src/components/main_chat/DialogBoard.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
+    ElCheckboxGroup: typeof import('element-plus/es')['ElCheckboxGroup']
+    ElDescriptions: typeof import('element-plus/es')['ElDescriptions']
+    ElDescriptionsItem: typeof import('element-plus/es')['ElDescriptionsItem']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElOption: typeof import('element-plus/es')['ElOption']
@@ -17,6 +23,10 @@ declare module 'vue' {
     IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
     IconTittle: typeof import('./src/components/icons/IconTittle.vue')['default']
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
+    KcgOption: typeof import('./src/components/main_chat/KcgOption.vue')['default']
+    KnowledgeCard: typeof import('./src/components/tree_generate/KnowledgeCard.vue')['default']
+    NormOption: typeof import('./src/components/main_chat/NormOption.vue')['default']
+    TaskButtom: typeof import('./src/components/main_chat/TaskButtom.vue')['default']
     TreeBoard: typeof import('./src/components/tree_generate/TreeBoard.vue')['default']
   }
 }
