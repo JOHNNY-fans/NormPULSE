@@ -132,7 +132,7 @@ const retrievalData = async (query: string) => {
   dialog_messages.value.push({
     type: "human",
     content: query,
-    tend: "human",
+    tend: "retrival",
   });
   let post_data = {
     term_type: tree.value,
@@ -166,7 +166,7 @@ const inferenceData = async (query: string) => {
     content: prompt_dict["reference"]
       .replace("[INPUT]", query)
       .replace("[CANDIDATE]", "（" + candidates.value.join("\n") + "）"),
-    tend: "human",
+    tend: "retrival",
   });
   let post_data = {
     prompt: prompt,
