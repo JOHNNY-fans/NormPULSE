@@ -23,6 +23,8 @@
           v-model="text"
           @keyup.enter="startDialog"
           style="width: 70%"
+          placeholder="肩袖修补术"
+          @click="text === '' ? (text = '肩袖修补术') : (text = text)"
         ></el-input>
       </div>
     </transition>
@@ -60,9 +62,6 @@ let prompt_dict = {
   dis: "知识卡片生成，请依据你掌握的医疗知识，根据输入的疾病诊断术语生成它的知识卡片，包括它的定义描述、病因、病理、部位、疾病类型和临床表现（如症状、特征、分割、分类、性别、年龄、急性慢性、发病时间等）。[INPUT]",
   op: "请通过你的医疗知识帮我完成知识卡片生成任务\n知识卡片生成，请根据我输入手术操作术语生成它的知识卡片，包括它的定义描述、手术术式、作用部位、手术入路、手术疾病性质等。[INPUT]",
 };
-let level_output = [
-  "肩袖修补术:肩袖修补术 定义描述：肩袖修补术是一种用于治疗肩袖损伤的手术方法。肩袖损伤是指肩袖及其邻近组织的损伤，包括旋转袖肌群（冈上、冈下肌、小圆肌和肩胛下肌腱）的部分或完全破裂，肩袖的大块或完全撕脱，以及创伤引起的冈上肌腱炎等。肩袖修补术旨在通过修复损坏的肩袖组织，恢复肩关节的功能和稳定性。手术术式：肩袖修补术。作用部位：肩袖，旋转袖肌群。手术入路：通常可采用肩关节前外侧入路进行肩袖修补手术。在该入路下，医生通过制作适当的切口，将手术器械插入肩关节区域进行修复操作。手术疾病性质：肩袖修补术主要适用于肩袖损伤的治疗。肩袖损伤可由多种原因引起，如劳损、创伤或退行性病变。手术的具体方式和方式的选择取决于患者的病情和损伤的程度。",
-];
 let card_data = ref<string[]>([]);
 const startDialog = async () => {
   let query =
@@ -76,7 +75,7 @@ const getData = async (query: string) => {
   dialog_messages.value.push({
     type: "human",
     content: query,
-    tend: "human",
+    tend: "knowledge card generation",
   });
 
   // return;
