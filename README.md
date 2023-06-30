@@ -1,4 +1,4 @@
-# NormPULSE: A Generative Approach for Clinical Term Normalization
+# NormPULSE: A Generative Approach for Clinical Term Normalization [under construction]
 
 <!--
 **Here are some ideas to get you started:**
