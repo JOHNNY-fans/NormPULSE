@@ -1,4 +1,4 @@
-# NormPULSE: A Generative Approach for Clinical Term Normalization
+# NormPULSE: A Generative Approach for Clinical Term Normalization [under construction]
 
 <!--
 **Here are some ideas to get you started:**
@@ -59,9 +59,11 @@ Here is our simple demo.
 **Main Requirements**  
 > transformers>=4.27.4  
 > faiss-gpu==1.7.2  
-> torch==1.12.1  
+> torch==1.12.1
+> sentence-transformers==2.2.2  
 > fastapi  
 > uvicorn  
+> GPU memory 16 GB at least.
 
 **Installation**
 ```bash
@@ -73,7 +75,9 @@ pip install requirements.txt
 **Download Model**  
 You can find the PULSE-7b pre-trained model weights and the NormPULSE weights in the following huggingface repositories.  
 - [PULSE](https://huggingface.co/OpenMEDLab/PULSE-7bv5)
-- [NormPULSE] 
+- [NormPULSE]
+
+In the retrieval step, we select the open-source [M3E](https://huggingface.co/moka-ai/m3e-base) model as the text embedding model.
 
 **Usage To be continued~**
 ```bash
