@@ -89,13 +89,9 @@ python DDD
 
 ```sh
 cd demo-frontend
-yarn
+npm run dev
 ```
 
-**Compile and Hot-Reload for Development**
-
-```sh
-yarn dev
 ```
 
 **Run Backend**
