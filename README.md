@@ -81,7 +81,8 @@ Here is our simple demo.
 <div align="center">
     <a href="https://"><img width="1000px" height="auto" src="https://github.com/JOHNNY-fans/HierNorm/blob/main/figure/norm_demo_v3.png"></a>
 </div>
-**frontend Setup**
+
+**Run Frontend**
 
 ```sh
 cd demo-frontend
