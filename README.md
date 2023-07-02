@@ -47,12 +47,6 @@ The part of clinical term normalization data is based on the following two open-
 The standard terminology database is [ICD-10医保2.0版](https://code.nhsa.gov.cn/search.html?sysflag=80) and [ICD-9-CM3医保2.0版](https://code.nhsa.gov.cn/search.html?sysflag=80), and we construct the two corresponding code trees by parsing the term codes, which are available at [ICD-10_医保v2_tree.json](data/ICD-10_医保v2_tree.json) and [ICD-9-CM3_医保v2_tree.json](data/ICD-9-CM3_医保v2_tree.json)
 
 We also provide the examples of the training data at the [data directory](data/).  
-## Demo
-Here is our simple demo.
-<div align="center">
-    <a href="https://"><img width="1000px" height="auto" src="https://github.com/JOHNNY-fans/HierNorm/blob/main/figure/norm_demo_v3.png"></a>
-</div>
-
 
 ## Get Started
 ### Model Setup
@@ -83,6 +77,10 @@ In the retrieval step, we select the open-source [M3E](https://huggingface.co/mo
 We provide a sample usage in a jupyter notebook [usage_example.ipynb](https://github.com/JOHNNY-fans/NormPULSE/blob/main/usage_example.ipynb)
 
 ### Demo Setup
+Here is our simple demo.
+<div align="center">
+    <a href="https://"><img width="1000px" height="auto" src="https://github.com/JOHNNY-fans/HierNorm/blob/main/figure/norm_demo_v3.png"></a>
+</div>
 **frontend Setup**
 
 ```sh
