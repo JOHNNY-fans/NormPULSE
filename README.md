@@ -80,8 +80,8 @@ You can find the PULSE-7b pre-trained model weights and the NormPULSE weights in
 
 In the retrieval step, we select the open-source [M3E](https://huggingface.co/moka-ai/m3e-base) model as the text embedding model.
 
-**Usage**
-[usage_example.ipynb](https://github.com/JOHNNY-fans/NormPULSE/blob/main/usage_example.ipynb)
+**Usage**  
+We provide a sample usage in a jupyter notebook [usage_example.ipynb](https://github.com/JOHNNY-fans/NormPULSE/blob/main/usage_example.ipynb)
 
 ### Demo Setup
 **frontend Setup**
