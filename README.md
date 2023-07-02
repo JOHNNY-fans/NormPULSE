@@ -74,8 +74,7 @@ pip install requirements.txt
 ```
 
 **Download Model**  
-You can find the PULSE-7b pre-trained model weights and the NormPULSE weights in the following huggingface repositories.  
-- [PULSE](https://huggingface.co/OpenMEDLab/PULSE-7bv5)
+You can find the NormPULSE weights in the following huggingface repository.  
 - [NormPULSE](https://huggingface.co/Johnnyfans/normpulse)
 
 In the retrieval step, we select the open-source [M3E](https://huggingface.co/moka-ai/m3e-base) model as the text embedding model.
