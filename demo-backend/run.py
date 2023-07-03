@@ -29,9 +29,8 @@ app.add_middleware(
 	allow_headers=["*"],
 )
 
-
-
-@app.post("/retrival")
+#input: mention, output: term candidates
+@app.post("/retrieval")
 async def cand_retrival(request: Request):
     global dis_vec_engine, dis_level_tree, op_vec_engine, op_level_tree, dis_name2code, op_name2code
     json_post_raw = await request.json()
@@ -106,7 +105,8 @@ async def cand_retrival(request: Request):
                     
     return {'mention':mention,'cand':cand_list,'level':level,'term_type':term_type,'max_depth':max_depth}
 
-
+#input: kc_prompt, output: term candidates
+#input: norm_prompt, output: normlization result
 @app.post("/generate")
 async def model_gen(request: Request):
     global model, tokenizer, dis_level_tree, op_level_tree, dis_name2code, op_name2code
