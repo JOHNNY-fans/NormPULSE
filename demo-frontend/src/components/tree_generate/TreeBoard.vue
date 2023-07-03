@@ -225,6 +225,7 @@ const processData = () => {
         // edgeShape: "polyline",
         // edgeForkPosition: "50%",
         roam: true,
+        initialTreeDepth: -1,
         itemStyle: {
           borderWidth: 122,
           borderCap: "round",
