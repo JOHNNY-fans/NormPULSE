@@ -54,7 +54,7 @@ We also provide the examples of the training data at the [data directory](data/)
 > fastapi  
 > uvicorn  
 > [NodeJS](https://nodejs.org/en)>=18.x  
-> GPU memory 16 GB at least.  
+> GPU memory 16 GB at least  
 > Make sure your frontend port 3000 and backend port 2233 is available, and you can change them in [main.ts](./demo-frontend/src/main.ts) and [run.py](./demo-backend/run.py)
 
 **Installation**
