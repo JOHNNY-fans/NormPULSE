@@ -59,7 +59,7 @@ We also provide the examples of the training data at the [data directory](data/)
 ```bash
 git clone https://github.com/JOHNNY-fans/NormPULSE.git
 cd NormPULSE
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 **Download Model**  
