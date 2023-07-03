@@ -144,7 +144,7 @@ const retrievalData = async (query: string) => {
     level: level.value,
     history: history_dialog.value,
   };
-  axios.post(BASE_API + "retrival", post_data).then((res: any) => {
+  axios.post(BASE_API + "retrieval", post_data).then((res: any) => {
     // Tree.value.push(res.data.cand);
     tree_depth.value = res.data.max_depth;
     candidates.value = [];
