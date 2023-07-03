@@ -46,6 +46,7 @@ We also provide the examples of the training data at the [data directory](data/)
 ## Get Started
 ### Model Setup
 **Main Requirements**  
+> python=3.9.15  
 > transformers>=4.27.4  
 > faiss-gpu==1.7.2  
 > torch==1.12.1
