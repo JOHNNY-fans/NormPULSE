@@ -10,10 +10,7 @@
 -->
 
 This repository is a sub-repository of [PULSE](https://github.com/openmedlab/PULSE).
-<!-- Insert the project banner here -->
-<div align="center">
-    <a href="https://"><img width="1000px" height="auto" src="https://github.com/JOHNNY-fans/HierNorm/blob/main/figure/pulse.png"></a>
-</div>
+![image](./figure/pulse.png)
 
 ---
 
@@ -35,9 +32,7 @@ We outline the comprehensive framework of our solution to clinical term normaliz
 3. hierarchical reasoning, the model reasons out the final result layer by layer through the subtree.
 
 <!-- Insert a pipeline of your algorithm here if got one -->
-<div align="center">
-    <a href="https://"><img width="1000px" height="auto" src="https://github.com/JOHNNY-fans/HierNorm/blob/main/figure/architecture_zh.png"></a>
-</div>
+![image](./figure/architecture_zh.png)
 
 ## Dataset
 The part of clinical term normalization data is based on the following two open-source datasets.
