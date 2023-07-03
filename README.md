@@ -52,7 +52,7 @@ We also provide the examples of the training data at the [data directory](data/)
 > sentence-transformers==2.2.2  
 > fastapi  
 > uvicorn  
-> [NodeJS](https://nodejs.org/en)  
+> [NodeJS](https://nodejs.org/en)>=18.x  
 > GPU memory 16 GB at least.
 
 **Installation**
