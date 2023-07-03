@@ -105,7 +105,7 @@ async def cand_retrival(request: Request):
                     
     return {'mention':mention,'cand':cand_list,'level':level,'term_type':term_type,'max_depth':max_depth}
 
-#input: kc_prompt, output: term candidates
+#input: kc_prompt, output: knowledge card
 #input: norm_prompt, output: normlization result
 @app.post("/generate")
 async def model_gen(request: Request):
