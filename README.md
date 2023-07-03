@@ -46,6 +46,7 @@ We also provide the examples of the training data at the [data directory](data/)
 ## Get Started
 ### Model Setup
 **Main Requirements**  
+> cuda, no more than 12.x. Preferably 11.4  
 > python=3.9.16  
 > transformers>=4.29.2  
 > faiss-gpu==1.7.2  
