@@ -3,7 +3,7 @@ faiss-gpu
 fastapi
 uvicorn
 numpy
-ipykernel==6.23.1
+ipykernel
 jedi==0.18.2
 jieba==0.42.1
 jsonlines==3.1.0
