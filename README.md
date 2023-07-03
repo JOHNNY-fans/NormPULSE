@@ -82,6 +82,7 @@ Here is our simple demo.
 
 ```sh
 cd demo-frontend
+npm i  
 npm run dev
 ```
 
