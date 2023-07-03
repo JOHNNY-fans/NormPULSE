@@ -60,6 +60,8 @@ We also provide the examples of the training data at the [data directory](data/)
 ```bash
 git clone https://github.com/JOHNNY-fans/NormPULSE.git
 cd NormPULSE
+conda create -n normllm python=3.6.2
+conda activate normllm
 pip install -r requirements.txt
 ```
 
