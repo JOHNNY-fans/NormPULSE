@@ -47,7 +47,7 @@ We also provide the examples of the training data at the [data directory](data/)
 ### Model Setup
 **Main Requirements**  
 > python=3.9.16  
-> transformers>=4.27.4  
+> transformers>=4.29.2  
 > faiss-gpu==1.7.2  
 > torch==2.0.1
 > sentence-transformers==2.2.2  
