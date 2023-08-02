@@ -79,19 +79,20 @@ async def cand_retrival(request: Request):
     else:
         last_level_answer = history[-1][-1].split('推荐可能对应的标准词为：')[-1].split('##')
         if term_type == 'disease':
-            last_level_answer_code = [dis_name2code[level-2][i] for i in last_level_answer]
+            last_level_answer_code = [dis_name2code[level-2][i] for i in last_level_answer if i in list(op_name2code[level-2])]
             for item in search_tree_result:
                 if item[level-1] == 'pad':
                     continue
                 cand_item = dis_code[dis_name2code[level-1][item[level-1]]]
                 if cand_item not in cand_list and dis_code[dis_name2code[level-1][item[level-1]]]['father'] in last_level_answer_code:
                     cand_list.append(cand_item)
-            for add_c in dis_code[dis_code[dis_name2code[level-1][item[level-1]]]['father']]['child']:
-                if dis_code[add_c] not in cand_list:
-                    cand_list.append(dis_code[add_c])
+            if item[level-1] != 'pad':
+		for add_c in dis_code[dis_code[dis_name2code[level-1][item[level-1]]]['father']]['child']:
+                    if dis_code[add_c] not in cand_list:
+                        cand_list.append(dis_code[add_c])
                     
         elif term_type == 'operation':
-            last_level_answer_code = [op_name2code[level-2][i] for i in last_level_answer]
+            last_level_answer_code = [op_name2code[level-2][i] for i in last_level_answer if i in list(op_name2code[level-2])]
             for item in search_tree_result:
                 if item[level-1] == 'pad':
                     continue
@@ -99,9 +100,10 @@ async def cand_retrival(request: Request):
                 
                 if cand_item not in cand_list and op_code[op_name2code[level-1][item[level-1]]]['father'] in last_level_answer_code:
                     cand_list.append(cand_item)
-            for add_c in op_code[op_code[op_name2code[level-1][item[level-1]]]['father']]['child']:
-                if op_code[add_c] not in cand_list:
-                    cand_list.append(op_code[add_c])
+	    if item[level-1] != 'pad':
+            	for add_c in op_code[op_code[op_name2code[level-1][item[level-1]]]['father']]['child']:
+                    if op_code[add_c] not in cand_list:
+                        cand_list.append(op_code[add_c])
                     
     return {'mention':mention,'cand':cand_list,'level':level,'term_type':term_type,'max_depth':max_depth}
 
